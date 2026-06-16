@@ -1,0 +1,15 @@
+{
+  "total": 8981,
+  "train": 6735,
+  "test": 2246,
+  "by_forgery_type": {
+    "copy-move": 5216,
+    "removal": 2000,
+    "splicing": 1765
+  },
+  "by_source": {
+    "defacto_copymove": 2000,
+    "casia2": 4981,
+    "defacto_inpainting": 2000
+  }
+}
