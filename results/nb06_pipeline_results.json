@@ -7,12 +7,27 @@
     "Module 3: Spatial-Concentration Detector (LogReg on entropy+magnitude)",
     "Module 4: Region-Aware Suppression (noise-residual-guided avg-pool)"
   ],
-  "modes": {
-    "attack": "image \u2192 Concealer \u2192 anti-forensic image + perturbation map",
-    "attribute": "image \u2192 Supervisor Grad-CAM \u2192 where/why explanation",
-    "detect": "image \u2192 Grad-CAM features \u2192 clean/local/global classification",
-    "defend": "image \u2192 detect \u2192 suppress if flagged \u2192 re-predict",
-    "full_pipeline": "attack + attribute + defend, all outputs returned"
+  "demo_samples": [
+    50,
+    18,
+    120,
+    250
+  ],
+  "demo_results": {
+    "all_correctly_detected": true,
+    "detection_label": "local_attack",
+    "f1_clean": [
+      0.99,
+      0.988,
+      0.987,
+      0.976
+    ],
+    "f1_attacked": [
+      0.612,
+      0.395,
+      0.185,
+      0.567
+    ]
   },
-  "status": "All four modules integrated into single XAIAntiForensicsPipeline class"
+  "status": "All four modules integrated and demonstrated end-to-end on real test images."
 }
