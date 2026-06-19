@@ -1,0 +1,15 @@
+{
+  "model": "Mantra-Net (Wu et al., 2019)",
+  "weight_index": 4,
+  "n_eval": 100,
+  "mean_f1_at_threshold": {
+    "0.05": 0.0765,
+    "0.1": 0.0684,
+    "0.2": 0.053,
+    "0.3": 0.0401,
+    "0.5": 0.022,
+    "0.7": 0.01
+  },
+  "diagnostic_finding": "Predictions show generic texture-correlated activation spread across entire image, uncorrelated with ground-truth tamper location, consistent across all visually inspected samples. Most likely explanation: (1) cross-dataset generalization gap \u2014 Mantra-Net trained on its own synthetic dataset, not CASIA/DEFACTO; (2) possible noise-domain signal degradation from JPEG re-compression (quality 90) applied during our dataset preparation, compounding any pre-existing compression from CASIA's source images. This is consistent with known cross-dataset generalization weaknesses documented in forensics literature and reinforces this thesis's stated problem motivation.",
+  "engineering_note": "Mantra-Net's original TF1.15/Keras code was successfully bridged via an isolated legacy conda environment (Python 3.7, TF1.15, Keras 2.2.4, protobuf 3.20.3) after resolving three sequential framework incompatibilities: removed legacy Keras APIs, protobuf version conflict, and inherited eager-execution behavior. CPU-only inference due to L4 GPU architecture predating TF1.15's compiled CUDA kernels."
+}
