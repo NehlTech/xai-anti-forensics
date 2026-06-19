@@ -1,0 +1,18 @@
+{
+  "notebook": "06",
+  "module": "Pipeline Integration",
+  "components": [
+    "Module 1: Concealer (v11, SEAR-style adversarial attack)",
+    "Module 2: Attribution (Grad-CAM on Supervisor decoder)",
+    "Module 3: Spatial-Concentration Detector (LogReg on entropy+magnitude)",
+    "Module 4: Region-Aware Suppression (noise-residual-guided avg-pool)"
+  ],
+  "modes": {
+    "attack": "image \u2192 Concealer \u2192 anti-forensic image + perturbation map",
+    "attribute": "image \u2192 Supervisor Grad-CAM \u2192 where/why explanation",
+    "detect": "image \u2192 Grad-CAM features \u2192 clean/local/global classification",
+    "defend": "image \u2192 detect \u2192 suppress if flagged \u2192 re-predict",
+    "full_pipeline": "attack + attribute + defend, all outputs returned"
+  },
+  "status": "All four modules integrated into single XAIAntiForensicsPipeline class"
+}
