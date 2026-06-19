@@ -1,0 +1,20 @@
+{
+  "notebook": "05",
+  "module": "Region-Aware Suppression",
+  "n_eval": 200,
+  "results": {
+    "clean_no_defense": 0.2365,
+    "clean_naive_defense": 0.1242,
+    "clean_smart_defense": 0.2041,
+    "attacked_no_defense": 0.0909,
+    "attacked_naive_defense": 0.0849,
+    "attacked_smart_defense": 0.0913
+  },
+  "key_findings": [
+    "Detector-guided defense preserves 86% of clean accuracy (0.2041/0.2365) vs naive denoising which destroys it (0.1242/0.2365 = 53%)",
+    "Neither defense recovers attacked accuracy \u2014 simple avg-pool suppression too crude to reverse learned adversarial perturbation",
+    "Core value of the detector is in WHEN to suppress (avoiding collateral damage on clean images) not in the suppression technique itself"
+  ],
+  "limitation": "Suppression uses simple average-pooling denoising. A learned denoiser or neural purification method would likely recover more attacked accuracy.",
+  "future_work": "Replace avg-pool suppression with a trained denoising network or adversarial purification module."
+}
