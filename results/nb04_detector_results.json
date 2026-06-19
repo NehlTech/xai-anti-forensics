@@ -1,0 +1,29 @@
+{
+  "notebook": "04",
+  "module": "Spatial-Concentration Detector",
+  "features": [
+    "spatial_entropy(Grad-CAM)",
+    "mean_magnitude(Grad-CAM)"
+  ],
+  "classifier": "LogisticRegression",
+  "n_samples_per_class": 200,
+  "test_split": 0.3,
+  "overall_accuracy": 0.72,
+  "per_class_f1": {
+    "clean": 0.56,
+    "local_attack": 0.9,
+    "global_attack": 0.66
+  },
+  "per_class_recall": {
+    "clean": 0.42,
+    "local_attack": 1.0,
+    "global_attack": 0.75
+  },
+  "per_class_precision": {
+    "clean": 0.86,
+    "local_attack": 0.81,
+    "global_attack": 0.58
+  },
+  "key_finding": "Local (SEAR-style) attacks detected with F1=0.90 and perfect recall. Clean-vs-global separation weaker (overlapping Grad-CAM signatures). Original entropy-only hypothesis refined: magnitude as second feature enables three-way separation that entropy alone could not achieve.",
+  "methodology_note": "Entropy alone separated clean-vs-attacked but not local-vs-global. Adding Grad-CAM magnitude as second feature resolved this partially. Documented deviation from original single-feature hypothesis."
+}
