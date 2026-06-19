@@ -1,0 +1,10 @@
+{
+  "notebook": "02",
+  "variant": "v11",
+  "epochs": 30,
+  "mean_f1_clean": 0.2365,
+  "mean_f1_attacked": 0.0909,
+  "f1_reduction": 0.1456,
+  "relative_drop_pct": 61.6,
+  "note": "True inference path \u2014 no mask, no renormalization, raw Concealer output only"
+}
