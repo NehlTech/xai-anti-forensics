@@ -1,0 +1,31 @@
+{
+  "setting": "retrained-defense",
+  "description": "Supervisor adversarially fine-tuned on 50/50 mix of clean and SEAR-attacked images, evaluated against attacks crafted against the original undefended model",
+  "n_eval": 100,
+  "finetune_epochs": 8,
+  "clean_f1_original": 0.2442,
+  "clean_f1_defended": 0.2495,
+  "results": {
+    "FGSM": {
+      "undefended": 0.0319,
+      "defended": 0.0441,
+      "recovery": 0.0122
+    },
+    "BIM": {
+      "undefended": 0.0139,
+      "defended": 0.0131,
+      "recovery": -0.0008
+    },
+    "MIM": {
+      "undefended": 0.0125,
+      "defended": 0.0129,
+      "recovery": 0.0004
+    },
+    "SEAR": {
+      "undefended": 0.0955,
+      "defended": 0.246,
+      "recovery": 0.1505
+    }
+  },
+  "key_finding": "Adversarial fine-tuning against SEAR almost completely neutralizes its effectiveness (F1 recovers from 0.0955 to 0.2460, nearly matching the clean baseline of 0.2495), with no cost to clean-image accuracy. This defense does not generalize to FGSM, BIM, or MIM, which were not part of the adversarial training data \u2014 recovery for these is negligible (within noise), consistent with the well-documented attack-specificity limitation of adversarial training in the literature."
+}
