@@ -1,0 +1,29 @@
+{
+  "setting": "white-box",
+  "description": "Attacks crafted with full gradient access to the target they attack",
+  "target": "SupervisorV3 (ours)",
+  "n_eval": 100,
+  "clean_f1": 0.2442,
+  "attacks": {
+    "FGSM": {
+      "f1": 0.0319,
+      "relative_drop_pct": 86.9,
+      "perturbation_mag": 0.02941
+    },
+    "BIM": {
+      "f1": 0.014,
+      "relative_drop_pct": 94.3,
+      "perturbation_mag": 0.01218
+    },
+    "MIM": {
+      "f1": 0.0124,
+      "relative_drop_pct": 94.9,
+      "perturbation_mag": 0.02284
+    },
+    "SEAR": {
+      "f1": 0.0955,
+      "relative_drop_pct": 60.9,
+      "perturbation_mag": 0.00099
+    }
+  }
+}
