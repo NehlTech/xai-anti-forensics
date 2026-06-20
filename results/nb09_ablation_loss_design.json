@@ -1,0 +1,15 @@
+{
+  "ablation": "Concealer adversarial loss design \u2014 capped vs uncapped",
+  "description": "Both variants use identical architecture, identical self-supervised confinement loss (pretext + hinge), identical frozen Supervisor, and identical loss weights (ALPHA=2, BETA=8). The only difference is whether the adversarial loss term is capped at a maximum magnitude (-2.0) or left unbounded.",
+  "uncapped_variant": {
+    "behavior": "l_adv climbed toward the numerical ceiling (~-13) within 3 epochs and plateaued there",
+    "confinement_metric": "pert_mean_outside grew to 0.087 at its worst (epoch 2)",
+    "diagnosis": "Reproduces the wholesale 'flip everywhere' exploit \u2014 the network achieves a high adversarial reward by overwhelming the Supervisor's prediction across the entire image rather than learning confined, targeted perturbation."
+  },
+  "capped_variant": {
+    "behavior": "l_adv stabilized cleanly at approximately -1.99 by epoch 2, remaining stable through epoch 29",
+    "confinement_metric": "pert_mean_outside dropped steadily to 0.00071 by epoch 29, a 40x improvement",
+    "diagnosis": "Capping the adversarial reward prevents the wholesale-flip shortcut from being a winning strategy, since its potential reward can no longer structurally dominate the bounded confinement loss terms. The network is forced to find genuine, confined evasion instead."
+  },
+  "key_finding": "The adversarial loss cap is not an optional tuning detail \u2014 removing it causes training to rediscover a fundamentally different, undesired strategy (the naive 'zero-one reversal' SEAR's original formulation explicitly warns against), confirmed through direct, controlled comparison of otherwise identical training runs."
+}

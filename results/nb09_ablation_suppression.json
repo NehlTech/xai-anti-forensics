@@ -1,0 +1,13 @@
+{
+  "ablation": "Suppression strategy \u2014 naive vs region-aware",
+  "n_eval": 200,
+  "results": {
+    "clean_no_defense": 0.2365,
+    "clean_naive_defense": 0.1242,
+    "clean_smart_defense": 0.2041,
+    "attacked_no_defense": 0.0909,
+    "attacked_naive_defense": 0.0849,
+    "attacked_smart_defense": 0.0913
+  },
+  "key_finding": "Naive full-image denoising causes severe collateral damage on clean images (F1 drops from 0.2365 to 0.1242, a 47.5% relative loss). Detector-guided region-aware suppression preserves far more clean-image accuracy (only a 13.7% relative loss, to 0.2041), since the detector correctly identifies most clean images and leaves them untouched. Neither strategy meaningfully recovers accuracy on genuinely attacked images, confirming the suppression module's primary value is avoiding unnecessary damage on clean inputs, not reversing the attack itself \u2014 a documented limitation with the specific averaging-based suppression technique used, rather than the detector-gating approach more broadly."
+}
