@@ -1,0 +1,17 @@
+{
+  "model": "SPAN (Hu et al., 2020)",
+  "n_eval": 100,
+  "mean_f1_at_threshold": {
+    "0.01": 0.076,
+    "0.02": 0.0657,
+    "0.05": 0.0518,
+    "0.1": 0.0385,
+    "0.2": 0.0148,
+    "0.3": 0.0019,
+    "0.5": 0.0
+  },
+  "best_threshold": 0.01,
+  "best_f1": 0.076,
+  "diagnostic_finding": "Raw output values are heavily concentrated near zero (median=0.0056, 99th percentile=0.24), making the standard 0.5 threshold produce exactly F1=0 across all 100 samples. At its own best operating threshold, SPAN's F1 (0.076) is nearly identical to Mantra-Net's best-threshold F1 (0.0765), both substantially below our own SupervisorV3's F1 (~0.24) on the same dataset. This is consistent with a known cross-dataset generalization gap for forensic models trained on different source distributions, and reinforces this thesis's core motivation.",
+  "engineering_note": "SPAN's actual published weights (PixelAttention32.h5) were successfully loaded via name-based recursive matching after discovering they were saved as a single nested sub-model group (likely from multi-GPU training wrapping), incompatible with Keras's standard by_name or positional weight loading. 24 of 29 named layers (all with nonzero params) loaded successfully with zero failures."
+}
