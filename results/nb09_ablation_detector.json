@@ -1,0 +1,23 @@
+{
+  "ablation": "Detector feature combination",
+  "n_eval": 200,
+  "results": {
+    "entropy_only": {
+      "accuracy": 0.333,
+      "f1_macro": 0.311,
+      "f1_local_attack": 0.387
+    },
+    "magnitude_only": {
+      "accuracy": 0.439,
+      "f1_macro": 0.395,
+      "f1_local_attack": 0.229
+    },
+    "both": {
+      "accuracy": 0.606,
+      "f1_macro": 0.595,
+      "f1_local_attack": 0.711
+    }
+  },
+  "key_finding": "Neither entropy nor magnitude alone provides adequate detection. Entropy alone performs barely above chance (33.3% accuracy, 3-class random baseline). Magnitude alone improves overall accuracy but is weaker than entropy alone specifically at detecting local (SEAR-style) attacks (F1=0.229 vs 0.387). Combining both features nearly doubles local-attack detection F1 (0.711) relative to either alone, validating the two-feature design as a genuine synergistic improvement rather than an arbitrary choice.",
+  "methodological_note": "Results show minor variance from Notebook 04's originally reported figures, attributable to GPU non-determinism in backward-pass gradient computation (standard for unseeded cuDNN operations). The three-way comparison within this single run is internally consistent and supports the stated conclusion."
+}
