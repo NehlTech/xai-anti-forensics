@@ -1,0 +1,25 @@
+{
+  "notebook": "07",
+  "component": "Attack baselines validation",
+  "n_eval": 20,
+  "clean_f1": 0.2255,
+  "results": {
+    "FGSM": {
+      "f1": 0.0075,
+      "perturbation_mag": 0.02964
+    },
+    "BIM": {
+      "f1": 0.0219,
+      "perturbation_mag": 0.01232
+    },
+    "MIM": {
+      "f1": 0.0212,
+      "perturbation_mag": 0.02312
+    },
+    "SEAR (Ours)": {
+      "f1": 0.1073,
+      "perturbation_mag": 0.00099
+    }
+  },
+  "key_finding": "SEAR achieves real, substantial F1 reduction (52% relative) using perturbation magnitude 12-30x smaller than unconstrained baselines (FGSM/BIM/MIM), which approach the full epsilon budget across the entire image. This demonstrates the imperceptibility-efficiency trade-off central to confined, learned anti-forensic attacks versus brute-force adversarial methods \u2014 substantially more damage per unit of visual disturbance."
+}
