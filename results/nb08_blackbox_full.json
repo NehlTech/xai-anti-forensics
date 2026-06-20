@@ -1,0 +1,35 @@
+{
+  "setting": "black-box",
+  "n_eval": 50,
+  "description": "Attacks crafted via gradients from our own Supervisor, tested against targets with zero involvement in crafting",
+  "targets": {
+    "ForensicsSAM": {
+      "clean_f1": 0.2988,
+      "attacked_f1": {
+        "FGSM": 0.2243,
+        "BIM": 0.2844,
+        "MIM": 0.2194,
+        "SEAR": 0.3
+      }
+    },
+    "Mantra-Net": {
+      "clean_f1": 0.0765,
+      "attacked_f1": {
+        "FGSM": 0.0783523326620839,
+        "BIM": 0.07493258729452937,
+        "MIM": 0.09059888425438593,
+        "SEAR": 0.046399584342381575
+      }
+    },
+    "SPAN": {
+      "clean_f1": 0.076,
+      "attacked_f1": {
+        "FGSM": 0.08073989743345933,
+        "BIM": 0.06436113069463696,
+        "MIM": 0.08774255790556833,
+        "SEAR": 0.0724435177952865
+      }
+    }
+  },
+  "key_finding": "Across all three black-box targets, degradation is dramatically weaker than the corresponding white-box results (60-95% F1 drops), confirming poor cross-model transferability of attacks crafted against a single CNN-based target. The one notable exception is SEAR against Mantra-Net specifically (39.3% drop), plausibly linked to Mantra-Net's noise-anomaly-sensitive architecture (Bayar constrained convolutions). Several near-zero or slightly negative 'drops' likely reflect sampling noise on already-low, noisy baseline F1 scores (0.04-0.09 range) at N=50, rather than genuine attack-induced improvement."
+}
