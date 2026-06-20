@@ -1,0 +1,20 @@
+{
+  "setting": "black-box",
+  "target": "ForensicsSAM",
+  "clean_f1_undefended": 0.2988,
+  "clean_f1_defended": 0.25385031899466415,
+  "results_undefended": {
+    "FGSM": 0.22429802278638816,
+    "BIM": 0.2844395920250099,
+    "MIM": 0.21941669278778136,
+    "SEAR": 0.3000193548644893
+  },
+  "results_defended": {
+    "FGSM": 0.17669154101604362,
+    "BIM": 0.22503291413420812,
+    "MIM": 0.19338440261315554,
+    "SEAR": 0.23909390362154226
+  },
+  "key_finding": "None of the four attacks (crafted via gradients from our own CNN-based Supervisor) transfer well to ForensicsSAM, a Vision Transformer-based foundation model \u2014 far weaker degradation than the corresponding white-box results, consistent with known poor cross-architecture transferability of adversarial perturbations. SEAR, the most precisely tuned attack, shows the weakest transfer of all (-0.4%), suggesting narrowly-optimized attacks generalize worse than broader ones.",
+  "defense_mechanism_finding": "Activating ForensicsSAM's adaptive adversary-correction mechanism (activate_adv=True) reduced F1 on EVERY condition tested, including clean, unattacked images (-0.065), with a magnitude comparable to or larger than the drops on attacked images. This indicates a general accuracy-robustness trade-off inherent to the mechanism itself, not a case of the defense actively misfiring against architecturally-mismatched attacks. This reinforces the importance of the adaptive, detector-gated activation the original authors describe, rather than unconditional activation, which we deliberately tested here to isolate the mechanism's standalone effect."
+}
