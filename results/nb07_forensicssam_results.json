@@ -1,0 +1,15 @@
+{
+  "model": "ForensicsSAM (2025, SAM ViT-H based)",
+  "n_eval": 100,
+  "mode": "baseline (activate_adv=False)",
+  "mean_f1": 0.2988,
+  "median_f1": 0.0117,
+  "mean_classification_confidence_forged": 0.7954,
+  "size_correlation_finding": {
+    "pearson_correlation": 0.056,
+    "mean_f1_large_tampered_region": 0.4068,
+    "mean_f1_small_tampered_region": 0.1909,
+    "interpretation": "Large mean/median gap reflects a skewed performance distribution: doing much better on some samples than others. Splitting by tampered-region size shows a real, meaningful difference (0.41 vs 0.19), consistent with ForensicsSAM's SAM-based architecture being naturally stronger at segmenting large, well-defined regions than subtle, small-area splices. However, weak linear correlation (0.056) indicates substantial additional variance beyond region size alone \u2014 this is a contributing factor, not the full explanation."
+  },
+  "comparison_context": "ForensicsSAM (mean F1=0.30) outperforms our own SupervisorV3 (F1\u22480.24), Mantra-Net (best-threshold F1=0.077), and SPAN (best-threshold F1=0.076) on this dataset, consistent with its status as a 2025 foundation-model-based approach versus older or custom-trained architectures."
+}
