@@ -1,0 +1,109 @@
+{
+  "notebook": "08",
+  "title": "Complete Benchmark Evaluation",
+  "white_box": {
+    "n_eval": 100,
+    "target": "SupervisorV3 (ours)",
+    "clean_f1": 0.2442,
+    "attacks": {
+      "FGSM": {
+        "f1": 0.0319,
+        "drop_pct": 86.9,
+        "pert_mag": 0.02941
+      },
+      "BIM": {
+        "f1": 0.0139,
+        "drop_pct": 94.3,
+        "pert_mag": 0.01218
+      },
+      "MIM": {
+        "f1": 0.0125,
+        "drop_pct": 94.9,
+        "pert_mag": 0.02284
+      },
+      "SEAR": {
+        "f1": 0.0955,
+        "drop_pct": 60.9,
+        "pert_mag": 0.00099
+      }
+    }
+  },
+  "black_box": {
+    "n_eval": 50,
+    "description": "Attacks crafted against our Supervisor, tested on unseen targets",
+    "ForensicsSAM": {
+      "clean_f1": 0.2988,
+      "FGSM": 0.2243,
+      "BIM": 0.2844,
+      "MIM": 0.2194,
+      "SEAR": 0.3
+    },
+    "Mantra-Net": {
+      "clean_f1": 0.0765,
+      "FGSM": 0.0784,
+      "BIM": 0.0749,
+      "MIM": 0.0906,
+      "SEAR": 0.0464
+    },
+    "SPAN": {
+      "clean_f1": 0.076,
+      "FGSM": 0.0807,
+      "BIM": 0.0644,
+      "MIM": 0.0877,
+      "SEAR": 0.0724
+    }
+  },
+  "foundation_model_defense": {
+    "n_eval": 50,
+    "target": "ForensicsSAM",
+    "clean_undefended": 0.2988,
+    "clean_defended": 0.2539,
+    "attacks": {
+      "FGSM": {
+        "undefended": 0.2243,
+        "defended": 0.1767
+      },
+      "BIM": {
+        "undefended": 0.2844,
+        "defended": 0.225
+      },
+      "MIM": {
+        "undefended": 0.2194,
+        "defended": 0.1934
+      },
+      "SEAR": {
+        "undefended": 0.3,
+        "defended": 0.2391
+      }
+    }
+  },
+  "retrained_defense": {
+    "n_eval": 100,
+    "description": "Supervisor adversarially fine-tuned against SEAR",
+    "clean_original": 0.2442,
+    "clean_defended": 0.2495,
+    "attacks": {
+      "FGSM": {
+        "undefended": 0.0319,
+        "defended": 0.0441,
+        "recovery": 0.0122
+      },
+      "BIM": {
+        "undefended": 0.0139,
+        "defended": 0.0131,
+        "recovery": -0.0008
+      },
+      "MIM": {
+        "undefended": 0.0125,
+        "defended": 0.0129,
+        "recovery": 0.0004
+      },
+      "SEAR": {
+        "undefended": 0.0955,
+        "defended": 0.246,
+        "recovery": 0.1505
+      }
+    }
+  },
+  "synthesis": "Across all four settings, a coherent narrative emerges. In white-box conditions, SEAR achieves substantial, real damage (60.9% F1 reduction) using a perturbation 12-30x smaller than unconstrained baselines, demonstrating the efficiency-imperceptibility trade-off central to this thesis. In black-box conditions, none of the attacks \u2014 including SEAR \u2014 transfer reliably across architectures, indicating that white-box vulnerability does not imply broad real-world risk across the forensic tool ecosystem; the one partial exception (SEAR against Mantra-Net) is plausibly explained by shared sensitivity to noise-domain artifacts. The foundation-model-defense setting reveals that ForensicsSAM's built-in adversarial correction mechanism imposes a real accuracy cost on both clean and attacked inputs alike, an accuracy-robustness trade-off rather than a clean win. Most significantly, the retrained-defense setting shows that once a defender knows about SEAR specifically \u2014 which is exactly what this thesis's Attribution Module and Spatial-Concentration Detector are designed to reveal \u2014 they can adversarially fine-tune to neutralize it almost completely (F1 recovers from 0.0955 to 0.2460, nearly matching the 0.2495 clean baseline) with no cost to clean accuracy, though this defense remains attack-specific and does not generalize to FGSM, BIM, or MIM. Together, these results support a central thesis claim: explainability is not incidental to defense, it is a precondition for building an effective, targeted one."
+}
