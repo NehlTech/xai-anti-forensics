@@ -1,0 +1,37 @@
+[
+    {
+        "id":  0,
+        "image":  "img_00.jpg",
+        "mask":  "mask_00.png",
+        "original_filename":  "casia_01950.jpg",
+        "original_index":  1950
+    },
+    {
+        "id":  1,
+        "image":  "img_01.jpg",
+        "mask":  "mask_01.png",
+        "original_filename":  "casia_02050.jpg",
+        "original_index":  2050
+    },
+    {
+        "id":  2,
+        "image":  "img_02.jpg",
+        "mask":  "mask_02.png",
+        "original_filename":  "casia_02850.jpg",
+        "original_index":  2850
+    },
+    {
+        "id":  3,
+        "image":  "img_03.jpg",
+        "mask":  "mask_03.png",
+        "original_filename":  "casia_01550.jpg",
+        "original_index":  1550
+    },
+    {
+        "id":  4,
+        "image":  "img_04.jpg",
+        "mask":  "mask_04.png",
+        "original_filename":  "casia_02200.jpg",
+        "original_index":  2200
+    }
+]
